@@ -37,3 +37,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+\.idea/
+*.log
+*.iml
+\.mvn/
+target/s
