@@ -1,6 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Country } from './country'
+import { UserService } from '../services/index';
 
 @Component({
   selector: 'registration-form',
@@ -26,7 +28,11 @@ export class RegistrationFormComponent implements OnInit {
      new Country(9, 'Mexico')
   ];
 
-  constructor() {}
+  loading = false;
+
+  constructor(
+     private router: Router,
+     private userService: UserService) {}
 
   ngOnInit() {
 
@@ -59,6 +65,7 @@ export class RegistrationFormComponent implements OnInit {
     console.log(this.form);
     if (this.form.valid) {
       console.log('form submitted');
+      this.form.reset();
     } else {
       this.validateAllFormFields(this.form);
     }
@@ -66,7 +73,7 @@ export class RegistrationFormComponent implements OnInit {
 
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
-      console.log(field);
+      //console.log(field);
       const control = formGroup.get(field);
       if (control instanceof FormControl) {
         control.markAsTouched({ onlySelf: true });
