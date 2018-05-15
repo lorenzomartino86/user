@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {
-FormGroup,
-FormBuilder,
-Validators,
-FormControl
-} from '@angular/forms';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Country } from './country'
 
 @Component({
   selector: 'registration-form',
@@ -13,24 +9,36 @@ FormControl
 })
 export class RegistrationFormComponent implements OnInit {
   form: FormGroup;
+  countryFormControl: FormControl;
+  firstNameFormControl: FormControl;
+  lastNameFormControl: FormControl;
 
-  constructor(private formBuilder: FormBuilder) {}
+  countries = [
+     new Country(1, 'Ireland' ),
+     new Country(2, 'India' ),
+     new Country(3, 'Australia' ),
+     new Country(4, 'Brazil'),
+     new Country(5, 'USA'),
+     new Country(6, 'Italy'),
+     new Country(7, 'France'),
+     new Country(8, 'Spain'),
+     new Country(9, 'Mexico')
+  ];
+
+  constructor() {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      firstName: [null, Validators.required],
-      lastName: [null, Validators.required],
 
-      email: [null, [Validators.required, Validators.email]],
-      address: this.formBuilder.group({
-        street: [null, Validators.required],
-        street2: [null],
-        zipCode: [null, Validators.required],
-        city: [null, Validators.required],
-        state: [null, Validators.required],
-        country: [null, Validators.required]
-      })
-    });
+     this.countryFormControl = new FormControl('', Validators.required);
+     this.firstNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+     this.lastNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+
+
+     this.form = new FormGroup({
+        'firstName': this.firstNameFormControl,
+        'lastName': this.lastNameFormControl,
+        'country': this.countryFormControl
+      });
   }
 
   isFieldValid(field: string) {

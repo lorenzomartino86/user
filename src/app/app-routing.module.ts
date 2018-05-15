@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'registration', component: RegistrationFormComponent }
+      {path: 'register', component: RegistrationFormComponent }
     ]
   }
 ];
