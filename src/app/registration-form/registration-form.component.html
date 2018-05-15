@@ -4,7 +4,7 @@
     <div class="col-sm-12">
       <label for="firstName" class="control-label required">First Name: </label>
       <input type="text" id="firstName" class="form-control" formControlName="firstName">
-      <error-registration-form [displayError]="isFieldValid('firstName')" errorMsg="Please fill first name">
+      <error-registration-form [displayError]="isFieldValid('firstName')" errorMsg="fistName should be greater than 5 characters">
       </error-registration-form>
     </div>
   </div>
@@ -13,7 +13,16 @@
     <div class="col-sm-12">
       <label for="lastName" class="control-label required">Last Name: </label>
       <input type="text" id="lastName" class="form-control" formControlName="lastName">
-      <error-registration-form [displayError]="isFieldValid('lastName')" errorMsg="Please fill last name">
+      <error-registration-form [displayError]="isFieldValid('lastName')" errorMsg="lastName should be greater than 5 characters">
+      </error-registration-form>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="displayFieldCss('phoneNumber')">
+    <div class="col-sm-12">
+      <label for="phoneNumber" class="control-label required">Phone Number: </label>
+      <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" >
+      <error-registration-form [displayError]="isFieldValid('phoneNumber')" errorMsg="Phone nr. should be composed by country code prefix (es: +353) and number">
       </error-registration-form>
     </div>
   </div>
@@ -25,7 +34,7 @@
         <option value="1">Please select a country</option>
         <option *ngFor="let country of countries" [value]="country.id" >{{country.name}}</option>
       </select>
-      <error-registration-form [displayError]="isFieldValid('country')" errorMsg="Please select country">
+      <error-registration-form [displayError]="isFieldValid('country')" errorMsg="Please select a country">
       </error-registration-form>
     </div>
   </div>

@@ -9,9 +9,10 @@ import { Country } from './country'
 })
 export class RegistrationFormComponent implements OnInit {
   form: FormGroup;
-  countryFormControl: FormControl;
   firstNameFormControl: FormControl;
   lastNameFormControl: FormControl;
+  countryFormControl: FormControl;
+  phoneNumberFormControl: FormControl;
 
   countries = [
      new Country(1, 'Ireland' ),
@@ -32,12 +33,14 @@ export class RegistrationFormComponent implements OnInit {
      this.countryFormControl = new FormControl('', Validators.required);
      this.firstNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
      this.lastNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+     this.phoneNumberFormControl = new FormControl(null, [Validators.required, Validators.pattern("^\\+[1-9]{1}[0-9]{3,14}$")]);
 
 
      this.form = new FormGroup({
         'firstName': this.firstNameFormControl,
         'lastName': this.lastNameFormControl,
-        'country': this.countryFormControl
+        'country': this.countryFormControl,
+        'phoneNumber': this.phoneNumberFormControl
       });
   }
 
