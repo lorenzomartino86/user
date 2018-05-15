@@ -1,26 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
 
-const appRoutes: Routes = [
-{ path: 'search', component: SearchComponent },
-{ path: '', redirectTo: '/search', pathMatch: 'full' }
-];
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { ErrorRegistrationFormComponent } from './error-registration-form/error-registration-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
+    RegistrationFormComponent,
+    ErrorRegistrationFormComponent
   ],
   imports: [
-    FormsModule,
-    RouterModule.forRoot(appRoutes),
-    BrowserModule
+   BrowserModule,
+   AppRoutingModule,
+   ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
