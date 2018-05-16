@@ -36,4 +36,38 @@ describe('RegistrationFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.form.valid).toBeFalsy();
+  });
+
+  it('firstName field validity', () => {
+    let firstName = component.form.controls['firstName'];
+    expect(firstName.valid).toBeFalsy();
+  });
+
+  it('lastName field validity', () => {
+    let lastName = component.form.controls['lastName'];
+    expect(lastName.valid).toBeFalsy();
+  });
+
+  it('phoneNumber field validity', () => {
+    let phoneNumber = component.form.controls['phoneNumber'];
+    expect(phoneNumber.valid).toBeFalsy();
+  });
+
+  it('country field validity', () => {
+    let country = component.form.controls['country'];
+    expect(country.valid).toBeFalsy();
+  });
+
+  it('all required fields validity', () => {
+    expect(component.form.valid).toBeFalsy();
+    component.form.controls['firstName'].setValue("FirstNameUser");
+    component.form.controls['lastName'].setValue("LastNameUser");
+    component.form.controls['phoneNumber'].setValue("0123456789");
+    component.form.controls['country'].setValue("Ireland");
+    expect(component.form.valid).toBeTruthy();
+  });
+
 });
