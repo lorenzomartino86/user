@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Laurence",
+      "lastName": "Martin",
+      "phoneNumber": "+391234567890",
+      "country": "Italy"
+    },
+    {
+      "firstName": "ciao123",
+      "lastName": "ciao21",
+      "phoneNumber": "+30123",
+      "country": "1",
+      "id": 2
+    }
+  ]
+}

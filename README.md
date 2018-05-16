@@ -43,3 +43,7 @@ ng serve
 
 ng generate component registration
 
+Install a JSON server 
+
+npm install -g json-server
+

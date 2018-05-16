@@ -11,6 +11,7 @@ import { UserService } from '../services/index';
 })
 export class RegistrationFormComponent implements OnInit {
   form: FormGroup;
+  model: any = {};
   firstNameFormControl: FormControl;
   lastNameFormControl: FormControl;
   countryFormControl: FormControl;
@@ -65,6 +66,13 @@ export class RegistrationFormComponent implements OnInit {
     console.log(this.form);
     if (this.form.valid) {
       console.log('form submitted');
+      this.userService.create(this.model).subscribe(
+            data => {
+                    console.log('Can Register');
+                },
+            error => {
+                    console.log(error);
+             });
       this.form.reset();
     } else {
       this.validateAllFormFields(this.form);
