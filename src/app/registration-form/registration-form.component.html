@@ -22,7 +22,7 @@
     <div class="col-sm-12">
       <label for="phoneNumber" class="control-label required">Phone Number: </label>
       <input type="text" id="phoneNumber" class="form-control" [(ngModel)]="model.phoneNumber" formControlName="phoneNumber" >
-      <error-registration-form [displayError]="isFieldValid('phoneNumber')" errorMsg="Phone nr. should be composed by country code prefix (es: +353) and number">
+      <error-registration-form [displayError]="isFieldValid('phoneNumber')" errorMsg="Phone nr. should be a numeric field">
       </error-registration-form>
     </div>
   </div>
@@ -38,7 +38,6 @@
       </error-registration-form>
     </div>
   </div>
-
 
   <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
   <button class="btn" (click)="reset()">Reset</button>

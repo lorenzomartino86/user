@@ -40,7 +40,7 @@ export class RegistrationFormComponent implements OnInit {
      this.countryFormControl = new FormControl('', Validators.required);
      this.firstNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
      this.lastNameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
-     this.phoneNumberFormControl = new FormControl(null, [Validators.required, Validators.pattern("^\\+[1-9]{1}[0-9]{3,14}$")]);
+     this.phoneNumberFormControl = new FormControl(null, [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$")]);
 
 
      this.form = new FormGroup({
@@ -73,6 +73,7 @@ export class RegistrationFormComponent implements OnInit {
             error => {
                     console.log(error);
              });
+      alert(this.model.firstName + ', your Account Has Been Created!');
       this.form.reset();
     } else {
       this.validateAllFormFields(this.form);

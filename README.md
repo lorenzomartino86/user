@@ -47,3 +47,5 @@ Install a JSON server
 
 npm install -g json-server
 
+json-server --watch  src/app/mock-backend/users.json
+
